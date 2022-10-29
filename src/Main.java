@@ -11,9 +11,9 @@ public class Main {
             printMenu();
             int command = scanner.nextInt();
             if (command == 1) {
-                reports.readMonthlyReport("2021", "01");
-                reports.readMonthlyReport("2021", "02");
-                reports.readMonthlyReport("2021", "03");
+                for (int i = 1; i <= 3; i++) {
+                    reports.readMonthlyReport("2021", "0" + i);
+                }
                 System.out.println("Отчет загружен.");
                 monthlyReportLoaded = true;
             } else if (command == 2) {
