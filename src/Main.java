@@ -11,15 +11,23 @@ public class Main {
             printMenu();
             int command = scanner.nextInt();
             if (command == 1) {
-                for (int i = 1; i <= 3; i++) {
-                    reports.readMonthlyReport("2021", "0" + i);
+                try {
+                    for (int i = 1; i <= 3; i++) {
+                        reports.readMonthlyReport("2021", "0" + i);
+                    }
+                    System.out.println("Отчет загружен.");
+                    monthlyReportLoaded = true;
+                } catch (Exception e) {
+                    System.out.println("Невозможно прочитать файл с месячным отчётом. Возможно, файл не находится в нужной директории.");
                 }
-                System.out.println("Отчет загружен.");
-                monthlyReportLoaded = true;
             } else if (command == 2) {
-                reports.readYearlyReport("2021");
-                System.out.println("Отчет загружен.");
-                yearlyReportLoaded = true;
+                try {
+                    reports.readYearlyReport("2021");
+                    System.out.println("Отчет загружен.");
+                    yearlyReportLoaded = true;
+                } catch (Exception e) {
+                    System.out.println("Невозможно прочитать файл с годовым отчётом. Возможно, файл не находится в нужной директории.");
+                }
             } else if (command == 3) {
                 if (yearlyReportLoaded && monthlyReportLoaded) {
                     reports.compareReports();

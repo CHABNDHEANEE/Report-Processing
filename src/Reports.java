@@ -14,11 +14,9 @@ public class Reports {
 
     void readMonthlyReport(String year, String month) { // Считываем месячный отчет
         String report = readFileContentsOrNull("resources/m." + year + month + ".csv");
-        if (report != null) {
-            month = getMonth(month);
-            MonthlyReport monthlyReport = new MonthlyReport(report, month);
-            reportsByMonths.put(month, monthlyReport);
-        }
+        month = getMonth(month);
+        MonthlyReport monthlyReport = new MonthlyReport(report, month);
+        reportsByMonths.put(month, monthlyReport);
     }
 
     String getMonth(String month) { // Получаем название месяца
@@ -42,10 +40,8 @@ public class Reports {
 
     void readYearlyReport(String year) {    // Считываем годовалый отчет
         String report = readFileContentsOrNull("resources/y." + year + ".csv");
-        if (report != null) {
-            YearlyReport yearlyReport = new YearlyReport(report, year);
-            reportsByYears.put(year, yearlyReport);
-        }
+        YearlyReport yearlyReport = new YearlyReport(report, year);
+        reportsByYears.put(year, yearlyReport);
     }
 
     void printStatByYear() {    // Печать статы по году
@@ -74,7 +70,6 @@ public class Reports {
         try {
             return Files.readString(Path.of(path));
         } catch (IOException e) {
-            System.out.println("Невозможно прочитать файл с месячным отчётом. Возможно, файл не находится в нужной директории.");
             return null;
         }
     }
