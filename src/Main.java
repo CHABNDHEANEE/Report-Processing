@@ -24,7 +24,7 @@ public class Main {
                 if (yearlyReportLoaded && monthlyReportLoaded) {
                     reports.compareReports();
                 } else {
-                    System.out.println("Для сверки данных необходимо сначала загрузить отчеты за год и месяца.");
+                    System.out.println("Для сверки данных необходимо сначала загрузить отчеты за год и месяц.");
                 }
             } else if (command == 4) {
                 if (monthlyReportLoaded) {

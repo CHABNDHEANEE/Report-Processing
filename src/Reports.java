@@ -62,7 +62,7 @@ public class Reports {
                 int yearExpense = reportsByYears.get("2021").expenses.get(month); // Расходы в годовом отчете
                 if (monthIncome != yearIncome || monthExpense != yearExpense) {
                     compared = false;
-                    System.out.println("Обнаружена ошибка в " + month);
+                    System.out.println("Обнаружена ошибка в " + month.replaceAll(".$", "е"));
                     break;
                 }
             }
