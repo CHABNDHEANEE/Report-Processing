@@ -14,9 +14,11 @@ public class Reports {
 
     void readMonthlyReport(String year, String month) { // Считываем месячный отчет
         String report = readFileContentsOrNull("resources/m." + year + month + ".csv");
-        month = getMonth(month);
-        MonthlyReport monthlyReport = new MonthlyReport(report, month);
-        reportsByMonths.put(month, monthlyReport);
+        if (report != null) {
+            month = getMonth(month);
+            MonthlyReport monthlyReport = new MonthlyReport(report, month);
+            reportsByMonths.put(month, monthlyReport);
+        }
     }
 
     String getMonth(String month) { // Получаем название месяца
@@ -40,8 +42,10 @@ public class Reports {
 
     void readYearlyReport(String year) {    // Считываем годовалый отчет
         String report = readFileContentsOrNull("resources/y." + year + ".csv");
-        YearlyReport yearlyReport = new YearlyReport(report, year);
-        reportsByYears.put(year, yearlyReport);
+        if (report != null) {
+            YearlyReport yearlyReport = new YearlyReport(report, year);
+            reportsByYears.put(year, yearlyReport);
+        }
     }
 
     void printStatByYear() {    // Печать статы по году
